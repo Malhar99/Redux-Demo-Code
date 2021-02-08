@@ -45,7 +45,6 @@ const {
   bugAssignedToUser,
   bugAdded,
   bugResolved,
-  bugRemoved,
   bugsRequested,
   bugsRequestFailed,
 } = slice.actions;
@@ -98,6 +97,11 @@ export const assignBugToUser = (bugId, userId) =>
 export const getUnresolvedBugs = createSelector(
   (state) => state.entities.bugs.list,
   (list) => list.filter((bug) => !bug.resolved)
+);
+
+export const getResolvedBugs = createSelector(
+  (state) => state.entities.bugs.list,
+  (list) => list.filter((bug) => bug.resolved)
 );
 
 export const getBugsbyUser = (userId) =>
